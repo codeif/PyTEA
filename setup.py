@@ -8,7 +8,7 @@ with open('README.rst') as f:
 
 setup(
     name='PyTEA',
-    version='0.0.1',
+    version='0.1.0',
     description='Tiny Encryption Algorithm (TEA) in Python.',
     long_description=readme,
     author='codeif',

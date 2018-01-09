@@ -2,7 +2,7 @@
 """根据js修改生成"""
 import random
 
-from .compat import bytes
+from .compat import bytes, bytes_to_int
 
 
 def random_byte():
@@ -28,12 +28,12 @@ class TEA(object):
         arr[from_index + 0] = uint >> 24 & 0xff
 
     def encipher(self, v):
-        o = int(v[0:4].hex(), 16)
-        r = int(v[4:8].hex(), 16)
-        p = int(self.key[0:4].hex(), 16)
-        a = int(self.key[4:8].hex(), 16)
-        s = int(self.key[8:12].hex(), 16)
-        l = int(self.key[12:16].hex(), 16)
+        o = bytes_to_int(v[0:4])
+        r = bytes_to_int(v[4:8])
+        p = bytes_to_int(self.key[0:4])
+        a = bytes_to_int(self.key[4:8])
+        s = bytes_to_int(self.key[8:12])
+        l = bytes_to_int(self.key[12:16])  # noqa
         c = 0
         for _ in range(16):
             c += self.DELTA
@@ -110,12 +110,12 @@ class TEA(object):
         return self.result
 
     def decipher(self, v):
-        o = int(v[0:4].hex(), 16)
-        r = int(v[4:8].hex(), 16)
-        p = int(self.key[0:4].hex(), 16)
-        a = int(self.key[4:8].hex(), 16)
-        s = int(self.key[8:12].hex(), 16)
-        l = int(self.key[12:16].hex(), 16)
+        o = bytes_to_int(v[0:4])
+        r = bytes_to_int(v[4:8])
+        p = bytes_to_int(self.key[0:4])
+        a = bytes_to_int(self.key[4:8])
+        s = bytes_to_int(self.key[8:12])
+        l = bytes_to_int(self.key[12:16])  # noqa
         c = 3816266640
         for _ in range(16):
             r -= (o << 4) + s ^ o + c ^ (o >> 5) + l

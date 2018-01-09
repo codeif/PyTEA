@@ -8,6 +8,7 @@ Python 3.
 """
 
 import sys
+import binascii
 
 # -------
 # Pythons
@@ -16,14 +17,20 @@ import sys
 # Syntax sugar.
 _ver = sys.version_info
 
-#: Python 2.x?
-is_py2 = (_ver[0] == 2)
-
 #: Python 3.x?
 is_py3 = (_ver[0] == 3)
 
-if is_py2:
+#: Python 2.x?
+is_py2 = (_ver[0] == 2)
+
+if is_py3:
+    bytes = bytes
+elif is_py2:
     bytes = str
 
-elif is_py3:
-    bytes = bytes
+
+def bytes_to_int(b):
+    if is_py3:
+        return int.from_bytes(b, 'big')
+    else:
+        return int(binascii.hexlify(b), 16)
