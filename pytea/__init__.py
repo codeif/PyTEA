@@ -167,7 +167,8 @@ class TEA(object):
             if self.xor_index == 8:
                 i = v
                 if not self.decipher_wrapper():
-                    return
+                    # return
+                    break
         o = 0
         while e != 0:
             if self.xor_index < 8:
@@ -181,18 +182,21 @@ class TEA(object):
                 i = v
                 self.result_pre_last_index = self.result_last_index - 8
                 if not self.decipher_wrapper():
-                    return
+                    # return
+                    break
         for r in range(1, 8):
             if self.xor_index < 8:
                 if (
                     i[self.result_pre_last_index + self.xor_index] ^
                     self.xor_b[self.xor_index]
                    ) != 0:
-                    return
+                    # continue
+                    break
                 self.xor_index += 1
             if self.xor_index == 8:
                 i = v
                 self.result_pre_last_index = self.result_last_index
                 if not self.decipher_wrapper():
-                    return
+                    # return
+                    break
         return self.result
