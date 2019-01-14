@@ -6,8 +6,15 @@ Wiki
 
 `Tiny Encryption Algorithm (TEA) <https://en.wikipedia.org/wiki/Tiny_Encryption_Algorithm>`_
 
+Installation
+---------------
+
+.. code-block:: sh
+
+    pip install PyTEA
+
 Usage
------
+------
 
 .. code-block:: python
 
