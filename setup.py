@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from setuptools import setup, find_packages
-
+from setuptools import find_packages, setup
 
 with open('README.rst') as f:
     readme = f.read()
@@ -8,7 +7,7 @@ with open('README.rst') as f:
 
 setup(
     name='PyTEA',
-    version='0.1.0',
+    version='0.1.1',
     description='Tiny Encryption Algorithm (TEA) in Python.',
     long_description=readme,
     author='codeif',
